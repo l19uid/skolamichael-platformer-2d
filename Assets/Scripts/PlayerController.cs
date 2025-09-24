@@ -30,8 +30,6 @@ namespace TarodevController
 
         private float _time;
 
-        // Happens once on object creation
-        // Stane se na zacatku hry
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -40,16 +38,12 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
-        // Happens everytime a frame is rendered
-        // Stane se kazdy snimek
         private void Update()
         {
             _time += Time.deltaTime;
             GatherInput();
         }
 
-        // Gathers input using Unitys legacy input system, Unity now uses a different system but it's more complex to set up
-        // Dostane vstupni hodnoty z Unityho stareho vstupniho systemu, ktery je jednodussi na nastaveni proto ho ted pouzivame
         private void GatherInput()
         {
             _frameInput = new FrameInput
@@ -72,10 +66,6 @@ namespace TarodevController
             }
         }
 
-        // Happens at a fixed interval, independent of frame rate, usually 50 times per second
-        // Usually used for physics/movement code
-        // Stane se v pravidelnych intervalech, nezavisle na snimcove frekvenci, obvykle 50x za sekundu
-        // Obvykle se pouziva pro fyziku/pohyb
         private void FixedUpdate()
         {
             CheckCollisions();
@@ -92,14 +82,9 @@ namespace TarodevController
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
 
-        // Check for collisions above and below the player using CapsuleCasts
-        // Kontroluje kolize nad a pod hracem pomoci CapsuleCastu
         private void CheckCollisions()
         {
             Physics2D.queriesStartInColliders = false;
-            
-            // CapsuleCast casts(sends out) a invisible capsule shape in a direction to check if it hits anything
-            // CapsuleCast vysle neviditelnou kapsli ve smeru a kontroluje, jestli neco zasahne
 
             // Ground and Ceiling
             bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
