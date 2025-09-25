@@ -11,6 +11,7 @@ public class Key : Interactable
         if (!inputInteraction && other.CompareTag(interactTag))
         {
             door.Unlock();
+            Destroy(gameObject);
         }
     }
 
@@ -19,6 +20,7 @@ public class Key : Interactable
         if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
         {
             door.Unlock();
+            Destroy(gameObject);
         }
     }
 }

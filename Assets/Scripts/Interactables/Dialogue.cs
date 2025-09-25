@@ -1,16 +1,37 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class Dialogue : Interactable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public string dialogueText = "Hello, this is a dialogue.";
+    private TextMeshProUGUI dialogueUI;
+    private void Start()
     {
-        
+        dialogueUI = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (!inputInteraction && other.CompareTag(interactTag))
+        {
+            dialogueUI.text = dialogueText;
+        }
+    }
+
+    public override void OnTriggerStay2D(Collider2D other)
+    {
+        if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
+        {
+            dialogueUI.text = dialogueText;
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(interactTag))
+        {
+            dialogueUI.text = "";
+        }
     }
 }

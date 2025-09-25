@@ -11,7 +11,7 @@ public class Spikes : Interactable
     {
         if (!inputInteraction && other.CompareTag(interactTag))
         {
-            // Hurt player for damageAmount
+            other.GetComponent<Player>()?.TakeDamage(damageAmount);
         }
     }
 
@@ -19,7 +19,7 @@ public class Spikes : Interactable
     {
         if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
         {
-            // Hurt player for damageAmount
+            other.GetComponent<Player>()?.TakeDamage(damageAmount);
         }
     }
 }

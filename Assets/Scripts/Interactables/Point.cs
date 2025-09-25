@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class Point : Interactable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int score = 10;
+
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (!inputInteraction && other.CompareTag(interactTag))
+        {
+            other.GetComponent<Player>()?.AddScore(score);
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnTriggerStay2D(Collider2D other)
     {
-        
+        if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
+        {
+            other.GetComponent<Player>()?.AddScore(score);
+            Destroy(gameObject);
+        }
     }
 }
