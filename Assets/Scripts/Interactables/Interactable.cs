@@ -8,8 +8,10 @@ public class Interactable : MonoBehaviour
     [Tooltip("If true, interaction requires pressing the 'F' key. If false, interaction happens automatically on trigger enter. /" +
              "Jestliže je true, interakce vyžaduje stisknutí klávesy 'F'. Pokud je false, interakce probíhá automaticky při vstupu do triggeru.")]
     public bool inputInteraction = false;
+    [Tooltip("Text, který se zobrazí, pokud musí hráč stisknout klávesu Interakce, pokud je prázdný, zobrazí se Press F")]
+    public string hintText;
 
-    private bool _isInteracting;
+    
     public  void OnTriggerEnter2D(Collider2D other)
     {
         if (!inputInteraction && other.CompareTag(interactTag))
@@ -23,12 +25,13 @@ public class Interactable : MonoBehaviour
     {
         if (inputInteraction && other.CompareTag(interactTag))
         {
-            Interface.Instance.ShowHint($"Press {interactKey.ToString()}");
             if (Input.GetKeyDown(interactKey))
             {
                 Interact(other);
-
             }
+         
+           Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
+            
         }
     }
     
@@ -45,7 +48,6 @@ public class Interactable : MonoBehaviour
     public virtual void Interact(Collider2D other)
     {
         Debug.Log($"Player interacted with  {gameObject}");
-        _isInteracting = true;
         Interface.Instance.HideHint();
 
 
@@ -54,6 +56,10 @@ public class Interactable : MonoBehaviour
     public virtual void StopInteraction(Collider2D other)
     {
         Debug.Log($"Player stoped interaction with {gameObject}");
-        _isInteracting = false;
+    }
+
+    public void OnDestroy()
+    {
+        Interface.Instance.HideHint();
     }
 }

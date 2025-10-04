@@ -123,7 +123,8 @@ MonoBehaviour:
   interactTag: Player
   interactKey: 102
   inputInteraction: 0
-  damageAmount: 10
+  hintText: 
+  damageAmount: 25
 --- !u!1 &7264720841969368432
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1622533434978897639}
@@ -200,8 +201,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7d6f3490c59314e8f91123fe30ea8b98, type: 3}
-  m_Color: {r: 1, g: 0.8816934, b: 0, a: 1}
+  m_Sprite: {fileID: 8071938086305923926, guid: ff85927eb09fcbe4386ab6b4ac78c860, type: 3}
+  m_Color: {r: 1, g: 0.23072466, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

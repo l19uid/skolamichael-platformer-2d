@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     private int _score;
     public TextMeshProUGUI _scoreText;
     private Vector2 respawnPoint = Vector2.zero;
+    public AudioSource  audioSource;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip scoreSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,18 +30,29 @@ public class Player : MonoBehaviour
     {
         _score += number;
         _scoreText.text = "Score: " + _score;
+        PlaySound(scoreSound);
     }
     
     public void TakeDamage(float amount)
     {
         _currentHealth -= amount;
         _healthText.text = "Health: " + _currentHealth;
+        transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+        PlaySound(damageSound);
+        
         if (_currentHealth <= 0)
         {
             Die();
         }
     }
-    
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null || audioSource == null)
+            return;
+        audioSource.PlayOneShot(clip);
+    }
+
     private void Die()
     {
         transform.position = respawnPoint;

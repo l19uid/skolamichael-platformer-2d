@@ -178,4 +178,5 @@ MonoBehaviour:
   interactTag: Player
   interactKey: 102
   inputInteraction: 0
+  hintText: to Talk
   dialogueText: Hello, this is a dialogue.

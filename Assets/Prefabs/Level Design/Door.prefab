@@ -257,4 +257,5 @@ MonoBehaviour:
   interactTag: Player
   interactKey: 102
   inputInteraction: 0
+  hintText: to Open Door
   toOpen: {fileID: 7826044765528280872}
