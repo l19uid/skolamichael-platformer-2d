@@ -8,30 +8,18 @@ public class Dialogue : Interactable
     private TextMeshProUGUI dialogueUI;
     private void Start()
     {
-        dialogueUI = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
+        dialogueUI = Interface.Instance.dialogueUI;
     }
 
-    public override void OnTriggerEnter2D(Collider2D other)
+    public override void Interact(Collider2D other)
     {
-        if (!inputInteraction && other.CompareTag(interactTag))
-        {
-            dialogueUI.text = dialogueText;
-        }
+        base.Interact(other);
+        dialogueUI.text = dialogueText;
     }
 
-    public override void OnTriggerStay2D(Collider2D other)
+    public override void StopInteraction(Collider2D other)
     {
-        if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
-        {
-            dialogueUI.text = dialogueText;
-        }
-    }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag(interactTag))
-        {
-            dialogueUI.text = "";
-        }
+        base.StopInteraction(other);
+        dialogueUI.text = "";
     }
 }

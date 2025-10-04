@@ -1,26 +1,22 @@
+using System;
 using UnityEngine;
 
 public class Key : Interactable
 {
     [Tooltip("The door that this key opens. / Dveře, které tento klíč otevírá.")]
     public Door door;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
-    public override void OnTriggerEnter2D(Collider2D other)
+
+
+    public void Start()
     {
-        if (!inputInteraction && other.CompareTag(interactTag))
-        {
-            door.Unlock();
-            Destroy(gameObject);
-        }
+        if (door == null)
+            Debug.LogWarning($"The Key {gameObject} has no door assigned");
     }
 
-    public override void OnTriggerStay2D(Collider2D other)
+    public override void Interact(Collider2D other)
     {
-        if (inputInteraction && other.CompareTag(interactTag) && Input.GetKeyDown(interactKey))
-        {
-            door.Unlock();
-            Destroy(gameObject);
-        }
+        base.Interact(other);
+        door.Unlock();
+        Destroy(gameObject);
     }
 }
