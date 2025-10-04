@@ -11,7 +11,6 @@ public class Portal : Interactable
     {
         base.Interact(other);
         other.transform.position = teleportLocation;
-
     }
 
     

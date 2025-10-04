@@ -11,7 +11,6 @@ public class Spikes : Interactable
     {
         base.Interact(other);
         other.GetComponent<Player>()?.TakeDamage(damageAmount);
-
     }
 
     

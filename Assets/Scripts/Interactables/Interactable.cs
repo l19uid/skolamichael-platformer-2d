@@ -49,8 +49,6 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log($"Player interacted with  {gameObject}");
         Interface.Instance.HideHint();
-
-
     }
 
     public virtual void StopInteraction(Collider2D other)
