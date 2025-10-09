@@ -6,7 +6,7 @@ public class Door : Interactable
     [Tooltip("Once the door is unlocked, this GameObject will be deactivated. / Když jsou dveře odemčeny, tento GameObject bude deaktivován.")]
     public GameObject toOpen;
 
-
+    // When player interacts with the door, it tries to open
     public override void Interact(Collider2D other)
     {
         base.Interact(other);
@@ -21,6 +21,7 @@ public class Door : Interactable
 
     private void Open() // Can be private
     {
+        // Only open if not locked
         if (!isLocked)
         {
             // Add your door unlocking logic here (e.g., play animation, disable collider, etc.)

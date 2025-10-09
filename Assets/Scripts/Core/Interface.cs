@@ -20,25 +20,36 @@ public class Interface : MonoBehaviour
             Debug.LogWarning("There is no Interface script in the Scene, did you add the Core prefab into the Scene?");
     }
 
+    // Function to show dialogue
     public void ShowDialogue(string dialogue)
     {
-        if (dialogueUI != null) dialogueUI.text = dialogue;
+        // First check if dialogueUI is not null to avoid errors, if we forgot to assign it in the inspector nothing will happen
+        // All other functions in this script do the same
+        if (dialogueUI != null) 
+            dialogueUI.text = dialogue;
     }
 
+    // Function to show score
     public void ShowScore(int score)
     {
         if (scoreUI != null) scoreUI.text = score.ToString();
     }
 
-    // Funkce na ukázání textu hint
-    // Nastaví text hintUI na předaný text který se pak zobrazí na obrazovce
+    // Function to show hint text
     public void ShowHint(string hint)
     {
         if (hintUI != null) hintUI.text = hint;
     }
 
+    // Function to hide hint text
     public void HideHint()
     {
         if (hintUI != null) hintUI.text = "";
+    }
+
+    // Function to show health
+    public void ShowHealth(float currentHealth, float maxHealth)
+    {
+        if (healthUI != null) healthUI.text = $"Health : {currentHealth}/{maxHealth}";
     }
 }

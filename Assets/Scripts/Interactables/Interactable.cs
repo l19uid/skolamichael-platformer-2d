@@ -25,10 +25,12 @@ public class Interactable : MonoBehaviour
             Interact(other);
         }
 
+        // Pokud je potřeba stisknout klávesu pro interakci, nastavíme že je hráč v dosahu
         if (inputInteraction && other.CompareTag(interactTag))
         {
             playerInRange = other.CompareTag(interactTag);
             playerCollider = other;
+            Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
         }
     }
 
@@ -37,20 +39,21 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
+        // If player is in range and input interaction is required
         if (inputInteraction && playerInRange)
         {
+            // Check for interaction key press
             if (Input.GetKeyDown(interactKey))
             {
                 Interact(playerCollider);
             }
-            
-            Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
         }
     }
     
-    // Když něco opustí trigger
+    // When something exits the trigger
     public void OnTriggerExit2D(Collider2D other)
     {
+        // If the player exits the trigger, stop interaction
         if (other.CompareTag(interactTag))
         {
             StopInteraction(other);
@@ -60,20 +63,20 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    // Metoda pro interakci, kterou lze přepsat v podtřídách
+    // Function for interaction, can be overridden in subclasses
     public virtual void Interact(Collider2D other)
     {
         Debug.Log($"Player interacted with {gameObject}");
         Interface.Instance.HideHint();
     }
 
-    // Metoda pro ukončení interakce, kterou lze přepsat v podtřídách
+    // Function for stopping interaction, can be overridden in subclasses
     public virtual void StopInteraction(Collider2D other)
     {
         Debug.Log($"Player stopped interaction with {gameObject}");
     }
 
-    // Když je objekt zničen, schováme hint
+    // When the object is destroyed, hide the hint
     public void OnDestroy()
     {
         Interface.Instance.HideHint();

@@ -10,11 +10,10 @@ public class Portal : Interactable
     public override void Interact(Collider2D other)
     {
         base.Interact(other);
+        // Teleport the player to the specified location
         other.transform.position = teleportLocation;
     }
 
-    
-    
     private void OnDrawGizmos() // Shows a debug sphere where to teleport player
     {
         Gizmos.color = Color.cyan;
