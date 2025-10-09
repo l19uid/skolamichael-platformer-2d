@@ -17875,6 +17875,14 @@ PrefabInstance:
       propertyPath: inputInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6005642358054348497, guid: 53e95d1520258934fa95b275cef9a9cf, type: 3}
+      propertyPath: m_Size.x
+      value: 6.6609793
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005642358054348497, guid: 53e95d1520258934fa95b275cef9a9cf, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.34494162
+      objectReference: {fileID: 0}
     - target: {fileID: 7575249834375849013, guid: 53e95d1520258934fa95b275cef9a9cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.78
