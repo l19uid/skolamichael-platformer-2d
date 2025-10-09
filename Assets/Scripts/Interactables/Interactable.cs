@@ -31,13 +31,13 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (inputInteraction && playerInRange && Input.GetKeyDown(interactKey))
-        {
-            Interact(playerCollider);
-        }
-
         if (inputInteraction && playerInRange)
         {
+            if (Input.GetKeyDown(interactKey))
+            {
+                Interact(playerCollider);
+            }
+            
             Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
         }
     }
