@@ -24,6 +24,12 @@ public class Interactable : MonoBehaviour
         {
             Interact(other);
         }
+
+        if (inputInteraction && other.CompareTag(interactTag))
+        {
+            playerInRange = other.CompareTag(interactTag);
+            playerCollider = other;
+        }
     }
 
     private bool playerInRange = false;
@@ -39,6 +45,18 @@ public class Interactable : MonoBehaviour
             }
             
             Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
+        }
+    }
+    
+    // Když něco opustí trigger
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(interactTag))
+        {
+            StopInteraction(other);
+            Interface.Instance.HideHint();
+            playerInRange = false;
+            playerCollider = null;
         }
     }
 
