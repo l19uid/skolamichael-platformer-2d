@@ -1,3 +1,4 @@
+using TarodevController;
 using TMPro;
 using UnityEngine;
 
@@ -33,11 +34,11 @@ public class Player : MonoBehaviour
         PlaySound(scoreSound);
     }
     
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, float strength, Vector2 origin)
     {
         _currentHealth -= amount;
         _healthText.text = "Health: " + _currentHealth;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+        transform.position += (transform.position - (Vector3)origin).normalized * strength;
         PlaySound(damageSound);
         
         if (_currentHealth <= 0)

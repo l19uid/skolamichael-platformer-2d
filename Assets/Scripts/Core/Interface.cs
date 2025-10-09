@@ -30,11 +30,12 @@ public class Interface : MonoBehaviour
         if (scoreUI != null) scoreUI.text = score.ToString();
     }
 
+    // Funkce na ukázání textu hint
+    // Nastaví text hintUI na předaný text který se pak zobrazí na obrazovce
     public void ShowHint(string hint)
     {
         if (hintUI != null) hintUI.text = hint;
     }
-
 
     public void HideHint()
     {

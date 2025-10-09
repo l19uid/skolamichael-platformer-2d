@@ -115,7 +115,6 @@ namespace TarodevController
 
         #endregion
 
-
         #region Jumping
 
         private bool _jumpToConsume;

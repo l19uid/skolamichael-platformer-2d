@@ -13,13 +13,10 @@ public class Door : Interactable
         Open();
     }
     
-    
     public void Unlock() // Unlocks from Key
     {
         if (isLocked)
-        {
             isLocked = false;
-        }
     }
 
     private void Open() // Can be private

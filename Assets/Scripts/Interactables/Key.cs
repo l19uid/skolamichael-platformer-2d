@@ -6,7 +6,6 @@ public class Key : Interactable
     [Tooltip("The door that this key opens. / Dveře, které tento klíč otevírá.")]
     public Door door;
 
-
     public void Start()
     {
         if (door == null)
