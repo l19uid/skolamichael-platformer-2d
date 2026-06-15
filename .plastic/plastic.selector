@@ -1,0 +1,4 @@
+repository "skolamichael-platformer-2d@local"
+  path "/"
+    br "/main"
+    co "/main"

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spikes : Interactable
 {
@@ -14,5 +14,6 @@ public class Spikes : Interactable
     {
         base.Interact(other);
         other.GetComponent<Player>()?.TakeDamage(damageAmount,pushAmount,transform.position);
+	    Debug.Log("Player damaged");   
     }
 }
